@@ -1,11 +1,34 @@
 package dev.danvega.mssqldemo.model;
 
+import org.hibernate.validator.constraints.URL;
+
+import javax.validation.constraints.NotEmpty;
+
 public class Course {
 
     private int courseId;
+    @NotEmpty
     private String title;
+    @NotEmpty
     private String description;
+    @NotEmpty
+    @URL
     private String link;
+
+    public Course() { }
+
+    public Course(String title, String description, String link) {
+        this.title = title;
+        this.description = description;
+        this.link = link;
+    }
+
+    public Course(int courseId, String title, String description, String link) {
+        this.courseId = courseId;
+        this.title = title;
+        this.description = description;
+        this.link = link;
+    }
 
     public int getCourseId() {
         return courseId;
